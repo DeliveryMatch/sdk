@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DeliveryMatch\HttpClient\Message;
 
 use Psr\Http\Message\ResponseInterface;

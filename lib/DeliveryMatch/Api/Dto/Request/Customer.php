@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DeliveryMatch\Api\Dto\Request;
 
 final class Customer

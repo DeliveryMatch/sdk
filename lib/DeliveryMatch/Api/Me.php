@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DeliveryMatch\Api;
 
 use DeliveryMatch\HttpClient\Message\ResponseMediator;
