@@ -1,0 +1,21 @@
+grumphp:
+    tasks:
+        phpcs:
+            standard: PSR12
+        phpstan:
+        phpcsfixer:
+        git_commit_message:
+            enforce_capitalized_subject: false
+            max_subject_width: 120
+            type_scope_conventions:
+                types:
+                    - ci
+                    - chore
+                    - docs
+                    - feat
+                    - fix
+                    - revert
+        git_branch_name:
+            whitelist:
+                - /(feat|fix|chore|hotfix)\/#([0-9]+)(-[a-z0-9]+)+$/
+

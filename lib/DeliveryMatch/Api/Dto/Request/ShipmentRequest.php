@@ -1,0 +1,22 @@
+<?php
+
+declare(strict_types=1);
+
+namespace DeliveryMatch\Api\Dto\Request;
+
+final class ShipmentRequest
+{
+    public function __construct(
+        public readonly Client $client,
+        public readonly Sender $sender,
+        public readonly Customer $customer,
+        public readonly Shipment $shipment,
+        public readonly array $packages,
+        public readonly array $products,
+        public readonly float $priceIncl,
+        public readonly float $weight,
+        public readonly bool $fragileGoods = false,
+        public readonly ?float $priceExcl = null
+    ) {
+    }
+}

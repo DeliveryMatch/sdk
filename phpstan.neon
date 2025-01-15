@@ -1,0 +1,8 @@
+parameters:
+    level: 8
+    tmpDir: .cache/phpstan
+    paths:
+        - lib
+    ignoreErrors:
+        -
+            identifier: missingType.iterableValue
