@@ -16,7 +16,25 @@ final class ShipmentRequest
         public readonly float $priceIncl,
         public readonly float $weight,
         public readonly bool $fragileGoods = false,
+        public readonly bool $dangerousGoods = false,
         public readonly ?float $priceExcl = null
     ) {
+    }
+
+    public function __serialize(): array
+    {
+        return [
+            "client" => $this->client,
+            "sender" => $this->sender,
+            "customer" => $this->customer,
+            "shipment" => $this->shipment,
+            "packages" => ["package" => $this->packages],
+            "qoute" => ["product" => $this->products],
+            "fragileGoods" => $this->fragileGoods,
+            "dangerousGoods" => $this->dangerousGoods,
+            "priceIncl" => $this->priceIncl,
+            "priceExcl" => $this->priceExcl,
+            "weight" => $this->weight,
+        ];
     }
 }

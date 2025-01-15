@@ -4,6 +4,7 @@ grumphp:
             standard: PSR12
         phpstan:
         phpcsfixer:
+            config: .php-cs-fixer.php
         git_commit_message:
             enforce_capitalized_subject: false
             max_subject_width: 120
@@ -15,7 +16,3 @@ grumphp:
                     - feat
                     - fix
                     - revert
-        git_branch_name:
-            whitelist:
-                - /(feat|fix|chore|hotfix)\/#([0-9]+)(-[a-z0-9]+)+$/
-

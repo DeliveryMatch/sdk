@@ -19,10 +19,15 @@ final class Client
 
     private Builder $httpClientBuilder;
 
-    public function __construct(string $apikey, int $clientId, bool $useProduction = true, ?Builder $httpClientBuilder = null)
-    {
+    public function __construct(
+        string $apikey,
+        int $clientId,
+        bool $useProduction = true,
+        ?Builder $httpClientBuilder = null
+    ) {
+        $uri = Psr17FactoryDiscovery::findUriFactory()->createUri($this->getUri($useProduction));
         $this->httpClientBuilder = $httpClientBuilder ?? new Builder();
-        $this->httpClientBuilder->addPlugin(new BaseUriPlugin(Psr17FactoryDiscovery::findUriFactory()->createUri($this->getUri($useProduction))));
+        $this->httpClientBuilder->addPlugin(new BaseUriPlugin($uri));
         $this->httpClientBuilder->addPlugin(new Authentication($clientId, $apikey));
     }
 

@@ -24,8 +24,15 @@ final class Shipments extends Endpoint
 
     public function update(ShipmentRequest $request): array
     {
-        if (empty($request->shipment->id) && empty($request->shipment->reference) && empty($request->shipment->orderNumber)) {
-            throw new InvalidArgumentException("Shipment details are incomplete. Please provide at least one of the following: shipment ID, reference, or order number.");
+        $hasIdentifier = empty($request->shipment->id)
+            && empty($request->shipment->reference)
+            && empty($request->shipment->orderNumber);
+
+        if ($hasIdentifier) {
+            $message = "Shipment details are incomplete." .
+                " Please provide at least one of the following: shipment ID, reference, or order number.";
+
+            throw new InvalidArgumentException($message);
         }
 
         $response = $this->client->getHttpClient()->post("/updateShipment", body: Json::encode($request));
