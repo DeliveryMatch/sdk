@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace DeliveryMatch\HttpClient\Message;
 
-use InvalidArgumentException;
-use RuntimeException;
+use DeliveryMatch\Exception\InvalidArgumentException;
+use DeliveryMatch\Exception\RuntimeException;
 
 final class Json
 {

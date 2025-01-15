@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace DeliveryMatch\HttpClient\Message;
 
+use DeliveryMatch\Exception\RuntimeException;
 use Psr\Http\Message\ResponseInterface;
-use RuntimeException;
 
 final class ResponseMediator
 {

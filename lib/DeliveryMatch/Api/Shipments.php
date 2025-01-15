@@ -6,9 +6,9 @@ namespace DeliveryMatch\Api;
 
 use DeliveryMatch\Api\Dto\Request\FindShipmentsRequest;
 use DeliveryMatch\Api\Dto\Request\ShipmentRequest;
+use DeliveryMatch\Exception\InvalidArgumentException;
 use DeliveryMatch\HttpClient\Message\Json;
 use DeliveryMatch\HttpClient\Message\ResponseMediator;
-use InvalidArgumentException;
 
 final class Shipments extends Endpoint
 {
