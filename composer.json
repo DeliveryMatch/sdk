@@ -2,6 +2,7 @@
     "name": "deliverymatch/sdk",
     "type": "library",
     "scripts": {
+        "phpcs:fix": "php-cs-fixer fix",
         "analyse": "phpstan analyse -c phpstan.neon --memory-limit 2G"
     },
     "autoload": {

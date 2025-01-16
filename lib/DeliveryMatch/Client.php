@@ -8,6 +8,7 @@ use DeliveryMatch\Api\Me;
 use DeliveryMatch\Api\Shipments;
 use DeliveryMatch\HttpClient\Builder;
 use DeliveryMatch\HttpClient\Plugin\Authentication;
+use DeliveryMatch\HttpClient\Plugin\DeliveryMatchExceptionThrower;
 use Http\Client\Common\HttpMethodsClientInterface;
 use Http\Client\Common\Plugin\BaseUriPlugin;
 use Http\Discovery\Psr17FactoryDiscovery;
@@ -29,6 +30,7 @@ final class Client
         $this->httpClientBuilder = $httpClientBuilder ?? new Builder();
         $this->httpClientBuilder->addPlugin(new BaseUriPlugin($uri));
         $this->httpClientBuilder->addPlugin(new Authentication($clientId, $apikey));
+        $this->httpClientBuilder->addPlugin(new DeliveryMatchExceptionThrower());
     }
 
     public function getHttpClient(): HttpMethodsClientInterface
