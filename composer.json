@@ -13,7 +13,8 @@
     "require": {
         "psr/http-factory": "^1.1",
         "psr/http-client": "^1.0",
-        "php-http/client-common": "^2.7"
+        "php-http/client-common": "^2.7",
+        "php": ">=7.4"
     },
     "require-dev": {
         "phpro/grumphp": "^2.10",
