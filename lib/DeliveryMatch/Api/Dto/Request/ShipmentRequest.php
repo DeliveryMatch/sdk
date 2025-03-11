@@ -21,6 +21,13 @@ final class ShipmentRequest
     ) {
     }
 
+    public function hasIdentifier(): bool
+    {
+        return !(empty($this->shipment->id)
+            && empty($this->shipment->reference)
+            && empty($this->shipment->orderNumber));
+    }
+
     public function __serialize(): array
     {
         return [
