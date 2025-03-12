@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace DeliveryMatch\Api;
 
-use DeliveryMatch\Client;
-
 abstract class Endpoint
 {
     protected Client $client;

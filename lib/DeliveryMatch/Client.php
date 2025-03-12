@@ -2,10 +2,8 @@
 
 declare(strict_types=1);
 
-namespace DeliveryMatch;
+namespace DeliveryMatch\Api;
 
-use DeliveryMatch\Api\Me;
-use DeliveryMatch\Api\Shipments;
 use DeliveryMatch\HttpClient\Builder;
 use DeliveryMatch\HttpClient\Plugin\Authentication;
 use DeliveryMatch\HttpClient\Plugin\DeliveryMatchExceptionThrower;
