@@ -2,14 +2,13 @@
 
 declare(strict_types=1);
 
-namespace DeliveryMatch\Api;
+namespace DeliveryMatch\Sdk\Api;
+
+use DeliveryMatch\Sdk\Client;
 
 abstract class Endpoint
 {
-    protected Client $client;
-
-    public function __construct(Client $client)
+    public function __construct(protected readonly Client $client)
     {
-        $this->client = $client;
     }
 }

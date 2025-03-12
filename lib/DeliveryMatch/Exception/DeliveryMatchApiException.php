@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-namespace DeliveryMatch\Exception;
+namespace DeliveryMatch\Sdk\Exception;
 
-class DeliveryMatchApiException extends RuntimeException
+class DeliveryMatchApiException extends \RuntimeException
 {
 }

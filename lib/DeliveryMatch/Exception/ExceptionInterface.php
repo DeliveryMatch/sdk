@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DeliveryMatch\Exception;
+namespace DeliveryMatch\Sdk\Exception;
 
 use Http\Client\Exception;
 

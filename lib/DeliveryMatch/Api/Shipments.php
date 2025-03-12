@@ -2,16 +2,22 @@
 
 declare(strict_types=1);
 
-namespace DeliveryMatch\Api;
+namespace DeliveryMatch\Sdk\Api;
 
-use DeliveryMatch\Api\Dto\Request\FindShipmentsRequest;
-use DeliveryMatch\Api\Dto\Request\ShipmentRequest;
-use DeliveryMatch\Exception\InvalidArgumentException;
-use DeliveryMatch\HttpClient\Message\Json;
-use DeliveryMatch\HttpClient\Message\ResponseMediator;
+use DeliveryMatch\Sdk\Api\Dto\Request\FindShipmentsRequest;
+use DeliveryMatch\Sdk\Api\Dto\Request\ShipmentRequest;
+use DeliveryMatch\Sdk\Api\HttpClient\Message\Json;
+use DeliveryMatch\Sdk\Exception\InvalidArgumentException;
+use DeliveryMatch\Sdk\HttpClient\Message\ResponseMediator;
+use Http\Client\Exception;
+use JsonException;
 
 final class Shipments extends Endpoint
 {
+    /**
+     * @throws JsonException
+     * @throws Exception
+     */
     public function insert(ShipmentRequest $request): array
     {
         if (!empty($request->shipment->id)) {
@@ -24,7 +30,7 @@ final class Shipments extends Endpoint
 
     public function update(ShipmentRequest $request): array
     {
-        if ($request->hasIdentifier()) {
+        if (!$request->hasIdentifier()) {
             $message = "Shipment details are incomplete." .
                 " Please provide at least one of the following: shipment ID, reference, or order number.";
 

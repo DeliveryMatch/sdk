@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DeliveryMatch\Api\Dto\Request;
+namespace DeliveryMatch\Sdk\Api\Dto\Request;
 
 final class DangerousGoods
 {

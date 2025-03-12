@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace DeliveryMatch\Api;
+namespace DeliveryMatch\Sdk\Api;
 
-use DeliveryMatch\HttpClient\Message\ResponseMediator;
+use DeliveryMatch\Sdk\HttpClient\Message\ResponseMediator;
 
 final class Me extends Endpoint
 {

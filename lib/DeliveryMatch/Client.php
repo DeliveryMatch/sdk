@@ -2,11 +2,13 @@
 
 declare(strict_types=1);
 
-namespace DeliveryMatch\Api;
+namespace DeliveryMatch\Sdk;
 
-use DeliveryMatch\HttpClient\Builder;
-use DeliveryMatch\HttpClient\Plugin\Authentication;
-use DeliveryMatch\HttpClient\Plugin\DeliveryMatchExceptionThrower;
+use DeliveryMatch\Sdk\Api\Me;
+use DeliveryMatch\Sdk\Api\Shipments;
+use DeliveryMatch\Sdk\HttpClient\Builder;
+use DeliveryMatch\Sdk\HttpClient\Plugin\Authentication;
+use DeliveryMatch\Sdk\HttpClient\Plugin\DeliveryMatchExceptionThrower;
 use Http\Client\Common\HttpMethodsClientInterface;
 use Http\Client\Common\Plugin\BaseUriPlugin;
 use Http\Discovery\Psr17FactoryDiscovery;

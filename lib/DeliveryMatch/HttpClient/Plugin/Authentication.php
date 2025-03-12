@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DeliveryMatch\HttpClient\Plugin;
+namespace DeliveryMatch\Sdk\HttpClient\Plugin;
 
 use Http\Client\Common\Plugin;
 use Psr\Http\Message\RequestInterface;

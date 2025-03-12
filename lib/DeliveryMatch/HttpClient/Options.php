@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DeliveryMatch\HttpClient;
+namespace DeliveryMatch\Sdk\HttpClient;
 
 final class Options
 {

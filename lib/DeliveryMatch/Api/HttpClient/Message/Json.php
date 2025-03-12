@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace DeliveryMatch\HttpClient\Message;
+namespace DeliveryMatch\Sdk\Api\HttpClient\Message;
+
+use JsonException;
 
 final class Json
 {
@@ -13,6 +15,7 @@ final class Json
      * @param int $options JSON encoding options (e.g., JSON_PRETTY_PRINT).
      * @param int<1, max> $depth Maximum depth for encoding.
      * @return string The JSON-encoded string.
+     * @throws JsonException
      */
     public static function encode($data, int $options = 0, int $depth = 512): string
     {
@@ -26,6 +29,7 @@ final class Json
      * @param int<1, max> $depth Maximum depth for decoding.
      * @param int $flags Decoding options.
      * @return array The decoded data.
+     * @throws JsonException
      */
     public static function decode(string $json, int $depth = 512, int $flags = 0): array
     {

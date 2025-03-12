@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace DeliveryMatch\HttpClient\Message;
+namespace DeliveryMatch\Sdk\HttpClient\Message;
 
-use DeliveryMatch\Exception\RuntimeException;
+use DeliveryMatch\Sdk\Exception\RuntimeException;
 use Psr\Http\Message\ResponseInterface;
 
 final class ResponseMediator
@@ -13,16 +13,14 @@ final class ResponseMediator
     {
         $body = $response->getBody()->__toString();
 
-        if (strpos($response->getHeaderLine('Content-Type'), 'application/json') !== 0) {
+        if (!str_starts_with($response->getHeaderLine('Content-Type'), 'application/json')) {
             throw new RuntimeException("No JSON response");
         }
 
-        $content = json_decode($body, true);
-
-        if (JSON_ERROR_NONE !== json_last_error()) {
-            throw new RuntimeException("Could not decode json");
+        try {
+            return json_decode($body, true, 512, JSON_THROW_ON_ERROR);
+        } catch (\JsonException $e) {
+            throw new RuntimeException("Could not decode json", 0, $e);
         }
-
-        return $content;
     }
 }
