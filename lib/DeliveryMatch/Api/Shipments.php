@@ -24,7 +24,7 @@ final class Shipments extends Endpoint
 
     public function update(ShipmentRequest $request): array
     {
-        if (!$request->hasIdentifier()) {
+        if ($request->hasIdentifier()) {
             $message = "Shipment details are incomplete." .
                 " Please provide at least one of the following: shipment ID, reference, or order number.";
 
