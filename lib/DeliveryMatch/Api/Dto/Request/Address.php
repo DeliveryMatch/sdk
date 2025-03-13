@@ -9,11 +9,11 @@ final class Address
     public function __construct(
         public readonly string $companyName,
         public readonly string $address1,
-        public readonly string $street,
-        public readonly string $houseNo,
         public readonly string $postcode,
         public readonly string $city,
         public readonly string $country,
+        public readonly ?string $street = null,
+        public readonly ?string $houseNo = null,
         public readonly ?string $state = null,
         public readonly ?string $zone = null,
         public readonly ?string $name = null,
