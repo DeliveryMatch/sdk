@@ -8,7 +8,7 @@ final class ShipmentRequest
 {
     public function __construct(
         public readonly Client $client,
-        public readonly Sender $sender,
+        public readonly ?Sender $sender,
         public readonly Customer $customer,
         public readonly Shipment $shipment,
         public readonly array $packages,
