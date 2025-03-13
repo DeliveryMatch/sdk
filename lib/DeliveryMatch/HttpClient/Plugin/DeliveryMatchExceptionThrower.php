@@ -32,6 +32,8 @@ final class DeliveryMatchExceptionThrower implements Plugin
                 $message = $responseData['message'] ?? "Request returned an unsuccessful result";
                 throw new DeliveryMatchApiException($message, $code);
             }
+
+            return $response;
         });
     }
 }
