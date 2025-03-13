@@ -8,7 +8,6 @@ final class ShipmentRequest
 {
     public function __construct(
         public readonly Client $client,
-        public readonly ?Sender $sender,
         public readonly Customer $customer,
         public readonly Shipment $shipment,
         public readonly array $packages,
@@ -17,6 +16,7 @@ final class ShipmentRequest
         public readonly float $weight,
         public readonly bool $fragileGoods = false,
         public readonly bool $dangerousGoods = false,
+        public readonly ?Sender $sender = null,
         public readonly ?float $priceExcl = null
     ) {
     }
