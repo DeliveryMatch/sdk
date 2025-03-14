@@ -31,7 +31,7 @@ final class ShipmentRequest implements JsonSerializable
             "customer" => $this->customer,
             "shipment" => $this->shipment,
             "packages" => ["package" => $this->packages],
-            "qoute" => ["product" => $this->products],
+            "quote" => ["product" => $this->products],
             "fragileGoods" => $this->fragileGoods,
             "dangerousGoods" => $this->dangerousGoods,
             "priceIncl" => $this->priceIncl,
