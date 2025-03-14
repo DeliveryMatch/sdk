@@ -40,6 +40,7 @@ final class Shipment implements JsonSerializable
         $formatDate = fn (?DateTime $date, $format) => $date ? $date->format($format) : null;
 
         return [
+            "id" => $this->id,
             "status" => $this->status,
             "orderNumber" => $this->orderNumber,
             "reference" => $this->reference,
