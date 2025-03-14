@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace DeliveryMatch\Sdk\Api\Dto\Request;
 
-final class ShipmentRequest
+use JsonSerializable;
+
+final class ShipmentRequest implements JsonSerializable
 {
     public function __construct(
         public readonly Client $client,
@@ -21,14 +23,7 @@ final class ShipmentRequest
     ) {
     }
 
-    public function hasIdentifier(): bool
-    {
-        return !(empty($this->shipment->id)
-            && empty($this->shipment->reference)
-            && empty($this->shipment->orderNumber));
-    }
-
-    public function __serialize(): array
+    public function jsonSerialize(): mixed
     {
         return [
             "client" => $this->client,
@@ -43,5 +38,12 @@ final class ShipmentRequest
             "priceExcl" => $this->priceExcl,
             "weight" => $this->weight,
         ];
+    }
+
+    public function hasIdentifier(): bool
+    {
+        return !(empty($this->shipment->id)
+            && empty($this->shipment->reference)
+            && empty($this->shipment->orderNumber));
     }
 }

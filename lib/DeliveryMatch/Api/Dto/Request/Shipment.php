@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace DeliveryMatch\Sdk\Api\Dto\Request;
 
 use DateTime;
+use JsonSerializable;
 
-final class Shipment
+final class Shipment implements JsonSerializable
 {
     public function __construct(
         public readonly string $language,
@@ -34,7 +35,7 @@ final class Shipment
     ) {
     }
 
-    public function __serialize(): array
+    public function jsonSerialize(): mixed
     {
         $formatDate = fn (?DateTime $date, $format) => $date ? $date->format($format) : null;
 
