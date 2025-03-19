@@ -70,4 +70,19 @@ final class Shipments extends Endpoint
         $response = $this->client->getHttpClient()->post("/getShipments", body: Json::encode($request));
         return ResponseMediator::getContent($response);
     }
+
+    public function selectMethod(int $shipmentId, string $methodId): array
+    {
+        $request = [
+            "shipment" => [
+                "id" => $shipmentId
+            ],
+            "shipmentMethod" => [
+                "id" => $methodId
+            ]
+        ];
+
+        $response = $this->client->getHttpClient()->post("/updateShipmentMethod", body: Json::encode($request));
+        return ResponseMediator::getContent($response);
+    }
 }
