@@ -25,10 +25,10 @@ jobs:
 
     - name: Transpile PHP code
       run: |
-        vendor/bin/phabel transpile --target=7.4 --output=dist/
+        vendor/bin/phabel publish
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: downgraded-sdk
+        name: transpiled-php
         path: dist/
