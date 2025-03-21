@@ -1,0 +1,5 @@
+{
+    "target_php_version": "7.4",
+    "paths": ["lib/"],
+    "output": "dist/"
+}

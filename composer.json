@@ -14,7 +14,7 @@
         "psr/http-factory": "^1.1",
         "psr/http-client": "^1.0",
         "php-http/client-common": "^2.7",
-        "php": ">=8.1",
+        "php": "^8.0",
         "ext-json": "*"
     },
     "require-dev": {
@@ -26,12 +26,19 @@
         "friendsofphp/php-cs-fixer": "^3.67",
         "php-http/mock-client": "^1.6",
         "phpunit/phpunit": "^11.5",
-        "ergebnis/phpstan-rules": "^2.6"
+        "ergebnis/phpstan-rules": "^2.6",
+        "phabel/phabel": "1.0.58.80"
     },
     "config": {
         "allow-plugins": {
             "phpro/grumphp": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "phabel/phabel": true
+        }
+    },
+    "extra": {
+        "phabel": {
+            "revision": 0
         }
     }
 }
