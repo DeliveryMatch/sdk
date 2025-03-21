@@ -25,7 +25,7 @@ jobs:
 
     - name: Transpile PHP code
       run: |
-        vendor/bin/phabel publish --target=7.4 --output=dist/
+        vendor/bin/phabel transpile --target=7.4 --output=dist/
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
