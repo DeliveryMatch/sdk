@@ -28,7 +28,7 @@ jobs:
         vendor/bin/phabel publish
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: downgraded-sdk
         path: dist/
