@@ -6,6 +6,7 @@ namespace DeliveryMatch\Sdk;
 
 use DeliveryMatch\Sdk\Api\Me;
 use DeliveryMatch\Sdk\Api\Shipments;
+use DeliveryMatch\Sdk\HttpClient\ApiEnvironment;
 use DeliveryMatch\Sdk\HttpClient\Builder;
 use DeliveryMatch\Sdk\HttpClient\Plugin\Authentication;
 use DeliveryMatch\Sdk\HttpClient\Plugin\DeliveryMatchExceptionThrower;
@@ -15,18 +16,15 @@ use Http\Discovery\Psr17FactoryDiscovery;
 
 final class Client
 {
-    private const PRODUCTION_URI = "https://engine.deliverymatch.eu/api/v1";
-    private const TEST_URI = "https://engine-test.deliverymatch.eu/api/v1";
-
     private Builder $httpClientBuilder;
 
     public function __construct(
         string $apikey,
         int $clientId,
-        bool $useProduction = true,
+        ApiEnvironment $environment = ApiEnvironment::TEST,
         ?Builder $httpClientBuilder = null
     ) {
-        $uri = Psr17FactoryDiscovery::findUriFactory()->createUri($this->getUri($useProduction));
+        $uri = Psr17FactoryDiscovery::findUriFactory()->createUri($environment->getUri());
         $this->httpClientBuilder = $httpClientBuilder ?? new Builder();
         $this->httpClientBuilder->addPlugin(new BaseUriPlugin($uri));
         $this->httpClientBuilder->addPlugin(new Authentication($clientId, $apikey));
@@ -36,11 +34,6 @@ final class Client
     public function getHttpClient(): HttpMethodsClientInterface
     {
         return $this->httpClientBuilder->getHttpClient();
-    }
-
-    private function getUri(bool $useProduction): string
-    {
-        return $useProduction ? self::PRODUCTION_URI : self::TEST_URI;
     }
 
     public function me(): Me
