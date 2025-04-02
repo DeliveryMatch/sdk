@@ -12,8 +12,8 @@ enum ApiEnvironment: string
     public function getUri(): string
     {
         return match ($this) {
-            ApiEnvironment::TEST => "https://engine-test.deliverymatch.eu/api/v1",
-            ApiEnvironment::PRODUCTION => "https://engine.deliverymatch.eu/api/v1",
+            self::TEST => "https://engine-test.deliverymatch.eu/api/v1",
+            self::PRODUCTION => "https://engine.deliverymatch.eu/api/v1",
         };
     }
 }

@@ -8,11 +8,15 @@ use DeliveryMatch\Sdk\Api\Me;
 use DeliveryMatch\Sdk\Api\Shipments;
 use DeliveryMatch\Sdk\HttpClient\ApiEnvironment;
 use DeliveryMatch\Sdk\HttpClient\Builder;
+use DeliveryMatch\Sdk\HttpClient\Message\Json;
+use DeliveryMatch\Sdk\HttpClient\Message\ResponseMediator;
 use DeliveryMatch\Sdk\HttpClient\Plugin\Authentication;
 use DeliveryMatch\Sdk\HttpClient\Plugin\DeliveryMatchExceptionThrower;
 use Http\Client\Common\HttpMethodsClientInterface;
 use Http\Client\Common\Plugin\BaseUriPlugin;
+use Http\Client\Exception;
 use Http\Discovery\Psr17FactoryDiscovery;
+use JsonException;
 
 final class Client
 {
@@ -31,7 +35,7 @@ final class Client
         $this->httpClientBuilder->addPlugin(new DeliveryMatchExceptionThrower());
     }
 
-    public function getHttpClient(): HttpMethodsClientInterface
+    private function getHttpClient(): HttpMethodsClientInterface
     {
         return $this->httpClientBuilder->getHttpClient();
     }
@@ -44,5 +48,28 @@ final class Client
     public function shipments(): Shipments
     {
         return new Shipments($this);
+    }
+
+    /**
+     * @throws Exception
+     * @throws JsonException
+     */
+    public function post(string $uri, object|array $body = null): array
+    {
+        if ($body !== null) {
+            $body = Json::encode($body);
+        }
+
+        $response = $this->getHttpClient()->post($uri, body: $body);
+        return ResponseMediator::getContent($response);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function get(string $uri): array
+    {
+        $response = $this->getHttpClient()->get($uri);
+        return ResponseMediator::getContent($response);
     }
 }

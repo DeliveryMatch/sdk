@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DeliveryMatch\Sdk\Api\HttpClient\Message;
+namespace DeliveryMatch\Sdk\HttpClient\Message;
 
 use JsonException;
 

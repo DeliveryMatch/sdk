@@ -4,13 +4,17 @@ declare(strict_types=1);
 
 namespace DeliveryMatch\Sdk\Api;
 
-use DeliveryMatch\Sdk\HttpClient\Message\ResponseMediator;
+use Http\Client\Exception;
+use JsonException;
 
 final class Me extends Endpoint
 {
+    /**
+     * @throws Exception
+     * @throws JsonException
+     */
     public function isAuthenticated(): array
     {
-        $response = $this->client->getHttpClient()->post('/me');
-        return ResponseMediator::getContent($response);
+        return $this->client->post('/me');
     }
 }

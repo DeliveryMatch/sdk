@@ -6,17 +6,15 @@ namespace DeliveryMatch\Sdk\Api;
 
 use DeliveryMatch\Sdk\Api\Dto\Request\FindShipmentsRequest;
 use DeliveryMatch\Sdk\Api\Dto\Request\ShipmentRequest;
-use DeliveryMatch\Sdk\Api\HttpClient\Message\Json;
 use DeliveryMatch\Sdk\Exception\InvalidArgumentException;
-use DeliveryMatch\Sdk\HttpClient\Message\ResponseMediator;
 use Http\Client\Exception;
 use JsonException;
 
 final class Shipments extends Endpoint
 {
     /**
-     * @throws JsonException
      * @throws Exception
+     * @throws JsonException
      */
     public function insert(ShipmentRequest $request): array
     {
@@ -24,10 +22,13 @@ final class Shipments extends Endpoint
             throw new InvalidArgumentException("Shipment id must be empty when creating new shipments");
         }
 
-        $response = $this->client->getHttpClient()->post("/insertShipment", body: Json::encode($request));
-        return ResponseMediator::getContent($response);
+        return $this->client->post("/insertShipment", body: $request);
     }
 
+    /**
+     * @throws Exception
+     * @throws JsonException
+     */
     public function update(ShipmentRequest $request): array
     {
         if (!$request->hasIdentifier()) {
@@ -37,10 +38,13 @@ final class Shipments extends Endpoint
             throw new InvalidArgumentException($message);
         }
 
-        $response = $this->client->getHttpClient()->post("/updateShipment", body: Json::encode($request));
-        return ResponseMediator::getContent($response);
+        return $this->client->post("/updateShipment", body: $request);
     }
 
+    /**
+     * @throws Exception
+     * @throws JsonException
+     */
     public function getById(int $id): array
     {
         $request = [
@@ -49,10 +53,13 @@ final class Shipments extends Endpoint
             ]
         ];
 
-        $response = $this->client->getHttpClient()->post("/getShipment", body: Json::encode($request));
-        return ResponseMediator::getContent($response);
+        return $this->client->post("/getShipment", body: $request);
     }
 
+    /**
+     * @throws Exception
+     * @throws JsonException
+     */
     public function getByOrderNumber(string $orderNumber): array
     {
         $request = [
@@ -61,16 +68,22 @@ final class Shipments extends Endpoint
             ]
         ];
 
-        $response = $this->client->getHttpClient()->post("/getShipment", body: Json::encode($request));
-        return ResponseMediator::getContent($response);
+        return $this->client->post("/getShipment", body: $request);
     }
 
+    /**
+     * @throws Exception
+     * @throws JsonException
+     */
     public function findMultiple(FindShipmentsRequest $request): array
     {
-        $response = $this->client->getHttpClient()->post("/getShipments", body: Json::encode($request));
-        return ResponseMediator::getContent($response);
+        return $this->client->post("/getShipments", body: $request);
     }
 
+    /**
+     * @throws Exception
+     * @throws JsonException
+     */
     public function selectMethod(int $shipmentId, string $methodId): array
     {
         $request = [
@@ -82,7 +95,6 @@ final class Shipments extends Endpoint
             ]
         ];
 
-        $response = $this->client->getHttpClient()->post("/updateShipmentMethod", body: Json::encode($request));
-        return ResponseMediator::getContent($response);
+        return $this->client->post("/updateShipmentMethod", body: $request);
     }
 }
