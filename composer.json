@@ -11,9 +11,8 @@
         }
     },
     "require": {
-
         "ext-json": "*",
-        "php-http/client-common": "^2.3",
+        "php-http/client-common": "^2.0",
         "php-http/discovery": "^1.12",
         "php-http/httplug": "^2.2",
         "psr/http-client-implementation": "^1.0",
