@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DeliveryMatch\Sdk\HttpClient;
 
+use DeliveryMatch\Sdk\HttpClient\Plugin\PluginClientAdapter;
 use Http\Client\Common\HttpMethodsClient;
 use Http\Client\Common\HttpMethodsClientInterface;
 use Http\Client\Common\Plugin;
@@ -42,9 +43,10 @@ final class Builder
     public function getHttpClient(): HttpMethodsClientInterface
     {
         $pluginClient = (new PluginClientFactory())->createClient($this->httpClient, $this->plugins);
+        $adapter = new PluginClientAdapter($pluginClient);
 
         return new HttpMethodsClient(
-            $pluginClient,
+            $adapter,
             $this->requestFactoryInterface,
             $this->streamFactoryInterface
         );
