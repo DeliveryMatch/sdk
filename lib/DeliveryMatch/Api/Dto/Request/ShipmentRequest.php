@@ -46,4 +46,21 @@ final class ShipmentRequest implements JsonSerializable
             && empty($this->shipment->reference)
             && empty($this->shipment->orderNumber));
     }
+
+    public function copyWithoutId(): ShipmentRequest
+    {
+        return new ShipmentRequest(
+            client: $this->client,
+            customer: $this->customer,
+            shipment: $this->shipment->copyWithoutId(),
+            packages: $this->packages,
+            products: $this->products,
+            priceIncl: $this->priceIncl,
+            weight: $this->weight,
+            fragileGoods: $this->fragileGoods,
+            dangerousGoods: $this->dangerousGoods,
+            sender: $this->sender,
+            priceExcl: $this->priceExcl
+        );
+    }
 }

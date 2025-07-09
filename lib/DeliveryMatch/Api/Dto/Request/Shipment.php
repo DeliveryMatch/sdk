@@ -66,4 +66,32 @@ final class Shipment implements JsonSerializable
             "config" => $this->config,
         ];
     }
+
+    public function copyWithoutId(): Shipment
+    {
+        return new Shipment(
+            language: $this->language,
+            currency: $this->currency,
+            firstPickupDate: $this->firstPickupDate,
+            status: $this->status,
+            id: null,
+            orderNumber: $this->orderNumber,
+            reference: $this->reference,
+            carrier: $this->carrier,
+            dropoffId: $this->dropoffId,
+            service: $this->service,
+            deliveryDateTimeFrom: $this->deliveryDateTimeFrom,
+            deliveryDateTimeTo: $this->deliveryDateTimeTo,
+            inbound: $this->inbound,
+            incoterm: $this->incoterm,
+            note: $this->note,
+            getDiscounts: $this->getDiscounts,
+            instructions: $this->instructions,
+            printerChannel: $this->printerChannel,
+            labelSequence: $this->labelSequence,
+            endOfShipment: $this->endOfShipment,
+            batch: $this->batch,
+            config: $this->config
+        );
+    }
 }
